@@ -36,4 +36,4 @@ one commit to master or latest commit - git checkout master
 * first time push --- git push -u origin <branch name> and next time only ---git push
 * I have to merge from main branch
 * locally merge --- git merge <branch name>
-* then push ---git push -u origin main
+* then push --- git push -u origin main
