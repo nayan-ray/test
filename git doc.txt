@@ -26,3 +26,14 @@ one commit to master or latest commit - git checkout master
 # copy remote repository to local repository ===== git clone <remote repository url>
 # copy and first time push --- git push -u origin main ---next time push --- git push  (only)
 # pull ----git pull
+
+* check branch --- git branch
+* create branch --- git branch "branch name"
+* one branch to another branch --- git checkout <branch name>
+* we can not delete active branch
+* delete branch --- git branch -d <branch name>
+* create and switch branch --- git checkout -b "branch name"
+* first time push --- git push -u origin <branch name> and next time only ---git push
+* I have to merge from main branch
+* locally merge --- git merge <branch name>
+* then push ---git push -u origin main
