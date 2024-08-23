@@ -37,3 +37,10 @@ one commit to master or latest commit - git checkout master
 * I have to merge from main branch but opposite to github
 * locally merge --- git merge <branch name>
 * then push --- git push -u origin main
+
+          git diff
+# difference between two commit --- git diff <commit id1> <commit id2> 
+# after staging any file to see what is modified --- git diff --staged 
+# after deleting any file to see what is deleted --- git diff
+*  difference between two branch --- git diff <branch1> <branch2>  
+
