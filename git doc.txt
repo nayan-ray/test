@@ -12,10 +12,10 @@ in short, git history - git log --oneline
 
 uncommit:{
    1.local repository to stagging area - git reset --soft HEAD^
-   2.local repository to working directory - git reset HEAD^
+   2.local repository to working directory - git reset --mixed HEAD^
    3.local repository to previous commit - git reset --hard HEAD^
 }
-
+$ delete locally commit and remotely === git reset --hard (locally) and git push origin -f (remotely)
 one commit to another commit - git checkout commit id
 
 one commit to master or latest commit - git checkout master
