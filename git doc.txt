@@ -19,10 +19,16 @@ uncommit:{
 one commit to another commit - git checkout commit id
 
 one commit to master or latest commit - git checkout master
-
+                remote repository connection details
 # check remote connection-- --- git remote
 # in details ---git remote -v
+# change origin name --- git remote rename origin new-origin
+# unlink remote repository link --- git remote rm origin
 # link up local repository and remote repository --- git remote add origin(name) <remote repository url>
+# change remote repository connection --- git remote set-url origin <remote repository url>
+# first time push --- git push origin main  then only ===git push
+# first time pull === git pull origin main  (any  branch name can be) then only ==git pull
+              cloning remote repository
 # copy remote repository to local repository ===== git clone <remote repository url>
 # copy and first time push --- git push -u origin main ---next time push --- git push  (only)
 # pull ----git pull
