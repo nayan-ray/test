@@ -56,3 +56,12 @@ one commit to master or latest commit - git checkout master
 @ after current head === git show HEAD~/^1  (2.3,4...)
 @ one snapshot to another snapshot === git checkout <snapshotid>
 
+           # git tag #
+ * git tag are pointers to specific commit in a git repository
+ git tag list show === git tag
+ git tag add in a specific commit or head === git tag <pointers> example git tag v1 (lightweight tag)
+ annotated tag === git tag -a <pointers> -n "message"
+ add to remote repository === git push origin --tags
+show specific tag === git show pointers
+delete a tag === git tag -d pointers
+remotely delete === git push origin --delete pointers 
