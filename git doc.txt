@@ -44,6 +44,13 @@ one commit to master or latest commit - git checkout master
 * I have to merge from main branch but opposite to github
 * locally merge --- git merge <branch name>
 * then push --- git push -u origin main
+             
+             * Resolve conflict
+current changes(main branch) ===git checkout --ours <branch name> 
+Accept incoming changes === git checkout --theirs <branch name> 
+abort merge(back)=== git merge --abort
+Accept both changes = change manually
+then add and push in main branch.           
 
               * git diff *
 
