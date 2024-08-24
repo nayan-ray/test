@@ -51,3 +51,8 @@ one commit to master or latest commit - git checkout master
  ^ un-stage one file === git reset <filename>
  ^ un-stage all added changes === git reset          
 
+         % git head %
+@ current head check === git show HEAD
+@ after current head === git show HEAD~/^1  (2.3,4...)
+@ one snapshot to another snapshot === git checkout <snapshotid>
+
