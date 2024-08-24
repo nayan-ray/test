@@ -44,3 +44,10 @@ one commit to master or latest commit - git checkout master
 # after deleting any file to see what is deleted --- git diff
 *  difference between two branch --- git diff <branch1> <branch2>  
 
+           * add and reset from add *
+
+ ^ specific file add === git add <filename> 
+ ^ all changes add === git add .
+ ^ un-stage one file === git reset <filename>
+ ^ un-stage all added changes === git reset          
+
