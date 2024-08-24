@@ -1,15 +1,11 @@
-commit - git commit -m "";
+           * git commit *
 
+ commit - git commit -m "";
 one file changes and if we not save the changes at any reason -git checkout the file name
-
 commit and description - git commit -m "commit message" -m "description"
-
 commit history - git log
-
 one commit in details - git show commit id
-
 in short, git history - git log --oneline
-
 uncommit:{
    1.local repository to stagging area - git reset --soft HEAD^
    2.local repository to working directory - git reset --mixed HEAD^
@@ -19,7 +15,9 @@ $ delete locally commit and remotely === git reset --hard (locally) and git push
 one commit to another commit - git checkout commit id
 
 one commit to master or latest commit - git checkout master
-                remote repository connection details
+
+                * remote repository connection details *
+
 # check remote connection-- --- git remote
 # in details ---git remote -v
 # change origin name --- git remote rename origin new-origin
@@ -28,23 +26,27 @@ one commit to master or latest commit - git checkout master
 # change remote repository connection --- git remote set-url origin <remote repository url>
 # first time push --- git push origin main  then only ===git push
 # first time pull === git pull origin main  (any  branch name can be) then only ==git pull
-              cloning remote repository
+             * cloning remote repository *
 # copy remote repository to local repository ===== git clone <remote repository url>
 # copy and first time push --- git push -u origin main ---next time push --- git push  (only)
 # pull ----git pull
+
+                      * branch *
 
 * check branch --- git branch
 * create branch --- git branch "branch name"
 * one branch to another branch --- git checkout <branch name>
 * we can not delete active branch
-* delete branch --- git branch -d <branch name>
+* locally delete branch --- git branch -d <branch name>
+* remotely delete branch ---git push origin --delete <branch name
 * create and switch branch --- git checkout -b "branch name"
 * first time push --- git push -u origin <branch name> and next time only ---git push
 * I have to merge from main branch but opposite to github
 * locally merge --- git merge <branch name>
 * then push --- git push -u origin main
 
-          git diff
+              * git diff *
+
 # difference between two commit --- git diff <commit id1> <commit id2> 
 # after staging any file to see what is modified --- git diff --staged 
 # after deleting any file to see what is deleted --- git diff
@@ -58,11 +60,13 @@ one commit to master or latest commit - git checkout master
  ^ un-stage all added changes === git reset          
 
          % git head %
+
 @ current head check === git show HEAD
 @ after current head === git show HEAD~/^1  (2.3,4...)
-@ one snapshot to another snapshot === git checkout <snapshotid>
+@ one snapshot(commit) to another snapshot === git checkout <snapshotid>
 
            # git tag #
+
  * git tag are pointers to specific commit in a git repository
  git tag list show === git tag
  git tag add in a specific commit or head === git tag <pointers> example git tag v1 (lightweight tag)
