@@ -44,6 +44,7 @@ one commit to master or latest commit - git checkout master
 * I have to merge from main branch but opposite to github
 * locally merge --- git merge <branch name>
 * then push --- git push -u origin main
+* cloning single branch from many === git clone --single-branch -b "branch name" github url
              
              * Resolve conflict
 current changes(main branch) ===git checkout --ours <branch name> 
