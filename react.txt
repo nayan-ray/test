@@ -1,0 +1,10 @@
+@ use effect clean up function 
+     ---at first render, clean up function do not run
+     ---next render,first clean up function run ,then all code run inside use-effect function.
+     useEffect(()=>{
+        "useEffect code here"
+         return ()=>{
+             clean up code here
+         }  
+
+     })
