@@ -74,4 +74,27 @@ for success response
             }
     })
 }
-
+5.get a single router by id
+only controller part =={
+      const getUSer =async (req, res, next)=>{
+          try{
+              const id = req.param.id;
+              const options = {password : 0};
+              const user = await Users.findById(id, options);
+              if(!user){
+                throw createError(404, "user not found by this id")
+              }
+              return successResponse(res,{
+                  statusCode : 200,
+                  message : user returned,
+                  payload :user,
+              })
+          }
+          catch(error){
+              if(error instanceOf mongoose.error){           (if this error is of mongoose for example i give id 5 instead of 251sfs4fs2fs5sff6a)
+                next(createError(400, "Invalid user id"))
+              }
+          }
+      }
+}
+6. create a service folder and keeping reusable code here
