@@ -100,10 +100,10 @@ only controller part =={
 }
 6. create a service folder and keeping reusable code here
 findItem.js in service folder.
-  const findWithId = async (id, options={})=>{
+  const findWithId = async (Model,id, options={})=>{
        try{
-          const item = await User.findById(id, options);
-          if(!item){throw createError(404 , "item not found by the id")};
+          const item = await Model.findById(id, options);
+          if(!item){throw createError(404 , `${Model.modelName} not found by the id`)};
           return item;
        }catch(error){
             if(error instanceOf mongoose.error){           (if this error is of mongoose for example i give id 5 instead of 251sfs4fs2fs5sff6a)
@@ -118,7 +118,7 @@ findItem.js in service folder.
       try{
          const id = req.param.id;
          const options = {password : 0};
-         const user = await findWithId(id, options);
+         const user = await findWithId(User , id, options);
          const userImagePath = user.image (image here document's property)
          //user image deleting
          fs.access(userImagePath, (err)=>{
