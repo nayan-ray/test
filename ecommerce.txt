@@ -114,6 +114,7 @@ findItem.js in service folder.
   }
 7. Delete user by id;
   deleteController.js
+  const fs = require("fs")
   const deleteUser = async(req, res, next)=>{
       try{
          const id = req.param.id;
@@ -131,10 +132,30 @@ findItem.js in service folder.
                  })
               }
          })
+         //or
+         deleteImage(userImagePath)
          //then user deleting
           await User.findByIdAndDelete({_id : id, isAdmin : false})
       }
   }
 
-
+8.deleting image in helper folder (then/catch)
+ const fs = require("fs").promises;
+ const deleteImage = (userImagePath)=>{
+      fs.access(userImagePath)
+      .then(()=> fs.unLink(userImagePath))
+      .then(()=> console.log("image has been deleted))
+      .catch((err)=> console.error("something went wrong"))
+ }
+or
+const deleteImage = async (userImagePath)=>{
+    try{
+        await fs.access(userImagePath);
+        await fs.unLink(userImagePath);
+        console.log("image has been deleted)
+    }catch(err){
+         console.error("something went wrong")
+    }
+      
+}
 
