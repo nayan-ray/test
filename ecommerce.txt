@@ -94,7 +94,47 @@ only controller part =={
               if(error instanceOf mongoose.error){           (if this error is of mongoose for example i give id 5 instead of 251sfs4fs2fs5sff6a)
                 next(createError(400, "Invalid user id"))
               }
+              throw error;
           }
       }
 }
 6. create a service folder and keeping reusable code here
+findItem.js in service folder.
+  const findWithId = async (id, options={})=>{
+       try{
+          const item = await User.findById(id, options);
+          if(!item){throw createError(404 , "item not found by the id")};
+          return item;
+       }catch(error){
+            if(error instanceOf mongoose.error){           (if this error is of mongoose for example i give id 5 instead of 251sfs4fs2fs5sff6a)
+                next(createError(400, "Invalid user id"))
+              }
+              throw error;
+       }
+  }
+7. Delete user by id;
+  deleteController.js
+  const deleteUser = async(req, res, next)=>{
+      try{
+         const id = req.param.id;
+         const options = {password : 0};
+         const user = await findWithId(id, options);
+         const userImagePath = user.image (image here document's property)
+         //user image deleting
+         fs.access(userImagePath, (err)=>{
+              if(err){
+                console.log("image path not found");
+              }else{
+                 fs.unLink(userImagePath,(err)=>{
+                     if(err) throw err;
+                     console.log("user successfully deleted);
+                 })
+              }
+         })
+         //then user deleting
+          await User.findByIdAndDelete({_id : id, isAdmin : false})
+      }
+  }
+
+
+
