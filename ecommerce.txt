@@ -261,3 +261,37 @@ try{
 catch(error){
   throw error;(we create error here);
 }
+
+* verify controller
+
+const activationAccount=async(req, res, next)=>{
+  try{
+     const token =req.body.token;
+     if(!token){throw new Error("Token not found")}
+     try{
+         const decoded = jwt.verify(token, secretKey);
+         if(!decoded){throw new Error("unable verify user")}
+         await User.create(decoded);
+
+         return successResponse(200,{
+            successCode: 201,
+            message : "user created successfully";
+         })
+     }catch(error){
+        if(error.name === "TokenExpiredError"){
+            throw new Error(401, "token has expired")
+        }else if(error.name === "jsonwebtokenError") {
+
+        }else{
+            throw error;
+        }
+     }
+    
+
+ 
+  }catch(error){
+    next(error);
+  }
+  
+
+}
