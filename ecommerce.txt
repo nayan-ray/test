@@ -158,4 +158,106 @@ const deleteImage = async (userImagePath)=>{
     }
       
 }
+9.create user (planing)
+post: api/users/process-register -->1. fetch data from request body
+                                    2. user exist
+                                    3.creating jwt token (here i will put user info as token temporarily)
+                                    4.prepare smpt server and email
+                                    4.send email -token and frond-end url(where i will verify the user for example "http://localhost:3536/accountActivation")
+                                    5.from user email account click and token will be send to frond-end page in unLink
+after taking token from link , this token will be send to back-end express server
+   for example this path api/user/verify
+                                     1.receive token 
+                                     2.verify token      
+                                     3.fetch data from token
+                                     5.finally store user to mongodb
 
+controller for user crating path
+const processRegister =async (req, res, next)=>{
+    try{
+        const {name , email, password, address,phone} = req.body;
+        const userExist = await User.exists({email : email});
+        const newUser = {
+            name,
+            email,
+            password,
+            address,
+            phone
+        }
+        //create token
+        const token = createWevToken(newUser ,jwtActivationKey(from secret.js file(i will create next time)),"10"(any time));
+        //prepare email
+
+        const emailData = {
+            email : email,
+            subject : "Account activation email",
+            html :`
+              <h2>Hello ${name}</h2>
+              ------
+              <p>please click here to <a href =`http://localhost:3536/accountActivation/${token}`>activate your account</a></p>
+            `
+        }
+        try{
+           await emailSendWithNodemailer(emailData);
+        }catch(error){
+              next(createError(500, "Failed to send verification email));
+              return;
+        }
+
+       return res.status(200).json()
+    }catch(error){
+        next(error)
+    }
+}
+creating token
+jswWevToken.js in helper folder,
+  const js =require('jsonwebtoken');
+  const createWevToken = (payload, secretKey, expiresIn)=>{
+     if(typeof payload !== "object" || !payload ){
+        throw new Error("payload must be a not-empty object");
+     }
+     if(typeof secretKey !== "string" || secretKey === " "){
+        throw new Error("secretKey must be a not-empty string");
+     }
+     try{
+       const token = jwt.sign(payload, secretKey,{expiresIn})
+      return = token; 
+     } catch(error){
+           console.error("Fail to sign the jwt ", error)
+           throw error;
+     }
+      
+  }
+  module.exports = {createWevToken};
+
+  * setup nodemailer.js in helper folder;
+  const nodemailer = require("nodemailer");
+try{
+  const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // Use `true` for port 465, `false` for all other ports
+  auth: {
+    user: "maddison53@ethereal.email",(my email)
+    pass: "jn7jnAPss4f63QBp6D", (my apppassword)
+  },
+  });
+
+   const emailSendWithNodemailer = async (emailData)=>{
+       
+      const mailoptions   = {
+    from: '"smptusername', // sender address
+    to: "emailData.email", // list of receivers
+    subject: emailData.subject, // Subject line
+    text: "Hello world?", // plain text body(as you wish)
+    html: emailData.html, // html body
+    }
+
+    }
+
+    const info = await transporter.sendMail(mailoptions);
+     console.log("Message sent: %s", info.messageId);
+ }
+catch(error){
+  throw error;(we create error here);
+}
