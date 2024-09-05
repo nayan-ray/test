@@ -295,3 +295,4 @@ const activationAccount=async(req, res, next)=>{
   
 
 }
+* file upload with Multer, image storing as buffer in database. (know about file in details)
